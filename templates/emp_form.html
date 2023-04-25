@@ -1,0 +1,18 @@
+{% extends 'basic.html' %} {% block title %}Emp_Form{% endblock %} {% block content %}
+<div class="my-4 col-6">
+    {% if form.instance.pk %}
+    <p>This is employee form. You can upadte the data</p>
+    {% else %}
+    <p>This is employee form. You can insert the data</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %} {{form.as_p}} {% if form.instance.pk %}
+        <input type="submit" class="btn btn-warning" value="Update"> {% else %}
+        <input type="submit" class="btn btn-warning" value="Insert"> {% endif %}
+        <a href="{% url 'emp_list' %}" class="btn btn-primary mx-4">Emp List</a>
+    </form>
+
+</div>
+
+
+{% endblock %}

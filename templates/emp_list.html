@@ -1,0 +1,42 @@
+{% extends 'basic.html' %} {% block title %}Emp_List{% endblock %} {% block content %}
+<div class="my-4">
+    <p>Employee Lists are:</p>
+    {% for msg in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    <a href="{% url 'emp_form' %}" class="btn btn-warning">Add New Employee</a>
+    <hr>
+    <table class="table">
+        <thead class="table-primary">
+            <tr>
+                <th>Employee Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Position</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in data %}
+            <tr>
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.mobile}}</td>
+                <td>{{emp.position}}</td>
+                <td><a href="{% url 'emp_update' emp.id %}" class="btn btn-info btn-sm">Update</a></td>
+                <td><a href="{% url 'emp_delete' emp.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+{% endblock %}
