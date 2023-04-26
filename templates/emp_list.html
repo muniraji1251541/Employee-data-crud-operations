@@ -30,7 +30,7 @@
                 <td>{{emp.mobile}}</td>
                 <td>{{emp.position}}</td>
                 <td><a href="{% url 'emp_update' emp.id %}" class="btn btn-info btn-sm">Update</a></td>
-                <td><a href="{% url 'emp_delete' emp.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+                <td><a href="{% url 'emp_delete' emp.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are yor sure to delete?')">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
